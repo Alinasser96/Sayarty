@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+        <attr name="sv_slideBackgroundColor" format="color" />
+        <attr name="sv_buttonBackgroundColor" format="color" />
+        <attr name="sv_buttonImage" format="reference" />
+        <attr name="sv_buttonImageDisabled" format="reference" />
+        <attr name="sv_strokeColor" format="color" />
+        <attr name="sv_slideText" format="string" />
+        <attr name="sv_slideText2" format="string" />
+        <attr name="sv_slideTextColor" format="color" />
+        <attr name="sv_reverseSlide" format="boolean" />
+        <attr name="sv_animateSlideText" format="boolean" />
+        <attr name="sv_slideTextSize" format="dimension" />
+    </declare-styleable>
+
+
+</resources>

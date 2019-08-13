@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.daily.CaptureActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp">
+
+            <TextView
+                android:id="@+id/hint_tv"
+                style="@style/CairoRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/right_side_hint"
+                android:textSize="@dimen/_22sdp"
+                app:layout_constraintBottom_toTopOf="@+id/camera_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--<FrameLayout-->
+            <!--android:id="@+id/camera_preview"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_alignStart="@+id/camera_frame"-->
+            <!--android:layout_alignTop="@+id/camera_frame"-->
+            <!--android:layout_alignEnd="@+id/camera_frame"-->
+            <!--android:layout_alignBottom="@id/camera_frame"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/camera_frame"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/camera_frame"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/camera_frame"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/camera_frame" />-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/camera_frame"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:adjustViewBounds="true"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--android:src="@drawable/truck_04"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/il"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/hint_tv" />-->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="8dp"
+                android:focusableInTouchMode="true"
+                android:hint="@string/add_comment"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/CairoRegular"
+                app:layout_constraintBottom_toTopOf="@+id/capture_button"
+                tools:layout_editor_absoluteX="6dp">
+
+                <EditText
+                    android:id="@+id/comment_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_alignStart="@+id/il"
+                    android:layout_alignBottom="@+id/il" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/capture_button"
+                style="@style/ActionButton.NextStepMode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="@string/capture"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/edit_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/edit_button"
+                style="@style/ActionButton.NextStepMode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/edit"
+                android:visibility="visible"
+                app:layout_constraintBaseline_toBaselineOf="@+id/capture_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/capture_button" />
+
+            <RelativeLayout
+                android:id="@+id/camera_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/il"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hint_tv"
+                android:gravity="center">
+                <FrameLayout
+                    android:id="@+id/camera_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="81"
+                        android:background="@color/black_semi_transparent"/>
+                    <ImageView
+                        android:id="@+id/camera_frame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/truck_04"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="81"
+                        android:background="@color/black_semi_transparent"/>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

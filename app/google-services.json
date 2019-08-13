@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "984423988814",
+    "firebase_url": "https://syarty-6090b.firebaseio.com",
+    "project_id": "syarty-6090b",
+    "storage_bucket": "syarty-6090b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984423988814:android:d675f1c2bab4eb7e",
+        "android_client_info": {
+          "package_name": "com.alyndroid.syarty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984423988814-l6tcfeu8prj8nqlo5423di81hnrcphaj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alyndroid.syarty",
+            "certificate_hash": "647c70258bbc81f8e72b70ef03a9181d9592a9d5"
+          }
+        },
+        {
+          "client_id": "984423988814-eu6vv4b2nm523l2c3834lhldq7n02cvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5g611JUsJbIHmuX_dHv7krrvfZtyyaWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984423988814-eu6vv4b2nm523l2c3834lhldq7n02cvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
