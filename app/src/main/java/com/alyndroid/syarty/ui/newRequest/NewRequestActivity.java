@@ -70,7 +70,7 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         remainingSeconds = 60;
 
-        if (getIntent().getExtras() == null){
+        if (getIntent().getExtras().get(Constant.INTENT_EXTRAS.Operation_id) == null){
             btnReject.setVisibility(View.GONE);
             isReminder = true;
         } else {
@@ -113,7 +113,7 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
                 .build();
         newRequestPresenter = component.getNewRequestPresenter();
         newRequestPresenter.attachView(this);
-        newRequestPresenter.setVisible(Integer.parseInt(operationID));
+//        newRequestPresenter.setVisible(Integer.parseInt(operationID));
     }
 
     @Override

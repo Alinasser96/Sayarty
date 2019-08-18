@@ -52,6 +52,7 @@ public interface Constant {
         String CAR_ID = "car_id";
         String FREQ_REMINDER = "FREQ_REMINDER ";
         String ATTACHED = "ATTACHED";
+        String RECEIVER_NAME = "RECEIVER_NAME";
     }
 
     interface REQUEST_CODES {

@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -25,6 +26,8 @@ public class RefuseActivity extends BaseActivity implements View.OnClickListener
     Button btnCancel;
     @BindView(R.id.btn_call)
     Button btnCall;
+    @BindView(R.id.message_tv)
+    TextView messageTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class RefuseActivity extends BaseActivity implements View.OnClickListener
         ButterKnife.bind(this);
         btnCancel.setOnClickListener(this);
         btnCall.setOnClickListener(this);
+        messageTv.setText( "السائق "+getIntent().getExtras().get(Constant.INTENT_EXTRAS.RECEIVER_NAME)+" رفض عملية التسليم");
     }
 
     @Override

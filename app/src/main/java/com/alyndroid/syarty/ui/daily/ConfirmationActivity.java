@@ -130,7 +130,7 @@ public class ConfirmationActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void store() {
-        int status=1;
+        int status = 1;
         switch (getIntent().getExtras().get(Constant.INTENT_EXTRAS.isFrom).toString()) {
             case Constant.INTENT_EXTRAS.NewCase:
                 status = 1;

@@ -54,6 +54,7 @@ public class ServiceFirebaseMessaging extends FirebaseMessagingService {
                 notificationHelper.generateNotification(getString(R.string.refused), getString(R.string.receiver_refused));
                 Intent refusedIntent = new Intent(ServiceFirebaseMessaging.this, RefuseActivity.class);
                 refusedIntent.putExtra(Constant.INTENT_EXTRAS.RECEIVER_PHONE, remoteMessage.getData().get("phone"));
+                refusedIntent.putExtra(Constant.INTENT_EXTRAS.RECEIVER_NAME, remoteMessage.getData().get("driver_name"));
                 refusedIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(refusedIntent);
                 break;
