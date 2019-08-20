@@ -90,5 +90,6 @@
     <string name="estipn">الإستبن</string>
     <string name="attached_confirmation_hint">برجاء تأكيد ملحقات السيارة</string>
     <string name="Attached_title">الملحقات</string>
+    <string name="verify_new_case">إثبات حالة</string>
 
 </resources>

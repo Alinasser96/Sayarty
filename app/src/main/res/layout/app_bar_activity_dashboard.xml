@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:text="@string/daily_cap"
+                android:text="@string/verify_new_case"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18sdp" />
         </LinearLayout>

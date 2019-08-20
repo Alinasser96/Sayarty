@@ -13,6 +13,17 @@ import com.alyndroid.syarty.util.helpers.LogHelper;
 import com.alyndroid.syarty.util.helpers.NotificationHelper;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ServiceFirebaseMessaging extends FirebaseMessagingService {
@@ -59,15 +70,33 @@ public class ServiceFirebaseMessaging extends FirebaseMessagingService {
                 startActivity(refusedIntent);
                 break;
             case "3":
+                List<String> carIds = convertJsonTolList(remoteMessage.getData().get("car_id"));
                 Intent pushIntent2 = new Intent("frequent");
                 LocalBroadcastManager.getInstance(this).sendBroadcast(pushIntent2);
                 Intent intent2 = new Intent(ServiceFirebaseMessaging.this, NewRequestActivity.class);
-                intent2.putExtra(Constant.INTENT_EXTRAS.CAR_ID, remoteMessage.getData().get("car_id"));
+                //todo more one id
+                intent2.putExtra(Constant.INTENT_EXTRAS.CAR_ID, carIds.get(0));
                 intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent2);
                 break;
 
 
         }
+    }
+
+
+
+    private List<String> convertJsonTolList(String data){
+        List<String> list = new ArrayList<String>();
+        try {
+            JSONArray array = new JSONArray(data);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jo = (JSONObject) array.get(i);
+                list.add(((JSONObject) array.get(i)).get("id").toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

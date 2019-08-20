@@ -82,7 +82,7 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onResume() {
         checkPermission();
-        super.onResume();
+        super.onResume(); 
     }
 
     @Override

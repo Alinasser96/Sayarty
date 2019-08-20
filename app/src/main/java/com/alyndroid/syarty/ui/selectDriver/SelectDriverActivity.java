@@ -10,8 +10,10 @@ import android.widget.Spinner;
 import androidx.appcompat.widget.Toolbar;
 
 import com.alyndroid.syarty.R;
+import com.alyndroid.syarty.data.local.SharedPreferenceHelper;
 import com.alyndroid.syarty.di.component.DaggerPresenterComponent;
 import com.alyndroid.syarty.di.component.PresenterComponent;
+import com.alyndroid.syarty.pojo.CoreUserData;
 import com.alyndroid.syarty.pojo.Driver;
 import com.alyndroid.syarty.ui.base.BaseActivity;
 import com.alyndroid.syarty.ui.daily.CaptureActivity;
@@ -34,6 +36,7 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
     Button confirm;
     private SelectDriverPresenter selectDriverPresenter;
     public List<Driver> drivers;
+    private CoreUserData user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
         PresenterComponent component = DaggerPresenterComponent.builder()
                 .acc(this)
                 .build();
-
+        user = SharedPreferenceHelper.getInstance(this).getCoreUserData();
         confirm.setOnClickListener(this);
         selectDriverPresenter = component.getSelectDriverPresenter();
         selectDriverPresenter.attachView(this);
@@ -57,7 +60,9 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
         this.drivers = drivers;
         List<String> names = new ArrayList<>();
         for (Driver driver : drivers) {
-            names.add(driver.getName());
+            if (driver.getID() == user.getUserId())
+                continue;
+                names.add(driver.getName());
         }
 
 
@@ -87,8 +92,8 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
         switch (view.getId()) {
             case R.id.confirm:
                 Intent intent = new Intent(this, CaptureActivity.class);
-                intent.putExtra(Constant.INTENT_EXTRAS.isFrom,Constant.INTENT_EXTRAS.SelectReceiver);
-                intent.putExtra(Constant.INTENT_EXTRAS.receiverID, getSelectedID()+"");
+                intent.putExtra(Constant.INTENT_EXTRAS.isFrom, Constant.INTENT_EXTRAS.SelectReceiver);
+                intent.putExtra(Constant.INTENT_EXTRAS.receiverID, getSelectedID() + "");
                 intent.putExtra(Constant.INTENT_EXTRAS.CAR_ID, (String) getIntent().getExtras().get(Constant.INTENT_EXTRAS.CAR_ID));
                 startActivity(intent);
                 break;
@@ -96,8 +101,8 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
     }
 
     public int getSelectedID() {
-        for(Driver driver:drivers){
-            if (driver.getName().equals(namesSpinner.getSelectedItem().toString())){
+        for (Driver driver : drivers) {
+            if (driver.getName().equals(namesSpinner.getSelectedItem().toString())) {
                 return driver.getID();
             }
         }
