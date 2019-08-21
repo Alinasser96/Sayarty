@@ -36,17 +36,17 @@ public class BaseNavigatorActivity extends BaseActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+//        navigationView = findViewById(R.id.nav_view);
 
         toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(this);
+//        navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView.getMenu().findItem(R.id.nav_version).setTitle(String.format(getString(R.string.version_number),
-                SyartyApp.Application.VERSION_NAME));
+//        navigationView.getMenu().findItem(R.id.nav_version).setTitle(String.format(getString(R.string.version_number),
+//                SyartyApp.Application.VERSION_NAME));
     }
 
     @Override
