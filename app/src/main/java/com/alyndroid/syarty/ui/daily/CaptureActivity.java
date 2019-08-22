@@ -82,21 +82,23 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onResume() {
         checkPermission();
-        super.onResume(); 
+        super.onResume();
     }
 
     @Override
     protected void onPause() {
-        mCamera.release();
+        if (mCamera != null) {
+            mCamera.release();
+        }
         super.onPause();
     }
 
     @Override
     public void onBackPressed() {
-        if (currentSide==1){
+        if (currentSide == 1) {
             super.onBackPressed();
-        }else {
-            updateUi(currentSide-1);
+        } else {
+            updateUi(currentSide - 1);
         }
     }
 
@@ -206,7 +208,7 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
         setComments();
         if (currentSide == 4) {
             Intent intent;
-            if(getIntent().getExtras().getString(Constant.INTENT_EXTRAS.isFrom).equals(Constant.INTENT_EXTRAS.NewRequest)){
+            if (getIntent().getExtras().getString(Constant.INTENT_EXTRAS.isFrom).equals(Constant.INTENT_EXTRAS.NewRequest)) {
                 intent = new Intent(this, AttachedActivity.class);
             } else {
                 intent = new Intent(this, ConfirmationActivity.class);
@@ -279,7 +281,7 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
         mCamera.startPreview();
     }
 
-    private void setComments(){
+    private void setComments() {
         switch (currentSide) {
             case 1:
                 comments.setRightSideComment(commentEt.getText().toString());

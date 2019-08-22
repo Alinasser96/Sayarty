@@ -93,7 +93,6 @@ public class NewRequestPresenter extends BasePresenter<NewRequestView> {
                 getView().setLoaded(150);
                 if (!response.isSuccessful()) {
                     getView().onSendStatusFail();
-
                 }
                 getView().onSendStatusSuccess();
             }

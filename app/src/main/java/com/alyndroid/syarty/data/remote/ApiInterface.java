@@ -25,6 +25,9 @@ public interface ApiInterface {
     @POST("delivery-car")
     Call<StoreResponse> sendToReceiver(@Body HashMap map);
 
+    @POST("driver_problem")
+    Call<SetFireBaseTokenResponse> sendIssue(@Body HashMap map);
+
     @PUT("delivery-status/{id}")
     Call<SetFireBaseTokenResponse> setOperationStatus(@Path("id") int operation_id,
                                                       @Body HashMap map);

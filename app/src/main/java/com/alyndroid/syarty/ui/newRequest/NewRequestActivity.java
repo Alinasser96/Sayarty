@@ -70,7 +70,7 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         remainingSeconds = 60;
 
-        if (getIntent().getExtras().get(Constant.INTENT_EXTRAS.Operation_id) == null){
+        if (getIntent().getExtras().get(Constant.INTENT_EXTRAS.Operation_id) == null) {
             btnReject.setVisibility(View.GONE);
             isReminder = true;
         } else {
@@ -153,10 +153,10 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
                 newRequestPresenter.sendStatus(2, Integer.parseInt(operationID));
                 break;
             case R.id.btn_delay_one_hour:
-                delayAction("01:00");
+                delayAction(CommonUtils.addTimeToCurrent(60));
                 break;
             case R.id.btn_delay_half_hour:
-                delayAction("00:30");
+                delayAction(CommonUtils.addTimeToCurrent(30));
                 break;
         }
     }
@@ -169,7 +169,7 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
 
     private void acceptAction() {
         isWithPhoto = true;
-        if (isReminder){
+        if (isReminder) {
             Intent intent = new Intent(this, CaptureActivity.class);
             intent.putExtra(Constant.INTENT_EXTRAS.isFrom, Constant.INTENT_EXTRAS.FREQ_REMINDER);
             intent.putExtra(Constant.INTENT_EXTRAS.CAR_ID, getIntent().getExtras().getString(Constant.INTENT_EXTRAS.CAR_ID));

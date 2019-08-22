@@ -337,4 +337,20 @@ public class CommonUtils {
 
         return mediaFile;
     }
+
+    public static String addTimeToCurrent(int timeToAdd){
+        String date2;
+        try{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a");
+        String currentDateAndTime = sdf.format(new Date());
+        Date date = sdf.parse(currentDateAndTime);
+        Calendar calendar = Calendar.getInstance(Locale.US);
+        calendar.setTime(date);
+        calendar.add(Calendar.MINUTE, timeToAdd);
+        date2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(calendar.getTime());
+        } catch (Exception e){
+            date2 = "error";
+        }
+        return date2;
+    }
 }

@@ -91,5 +91,29 @@
     <string name="attached_confirmation_hint">برجاء تأكيد ملحقات السيارة</string>
     <string name="Attached_title">الملحقات</string>
     <string name="verify_new_case">إثبات حالة</string>
+    <string name="add_issue">شكوى جديدة</string>
+    <string name="issues">الشكاوى</string>
+    <string name="title_activity_issues">الشكاوى</string>
+    <string name="no_issues">لا توجد شكاوى سابقة</string>
+    <string name="title_activity_issue_feed_back">تقرير الشكوى</string>
+    <string name="must_enter_content">يجب إدخال الشكوى</string>
+    <string name="must_enter_title">يجب اختيار عنوان</string>
+    <string name="issueConfirmed">تم تقديم الشكوى</string>
+    <string name="new_issue">شكوى جديدة</string>
+    <string name="issue_hint">برجاء توضيح الشكوى تماما حتى نتمكن من حلها في اسرع وقت</string>
+    <string name="issue_content">تفاصيل الشكوى</string>
+    <string name="no_feedback">لم يتم الرد على هذه الشكوى</string>
+    <string name="issue_title">عنوان الشكوى :</string>
+    <string name="report_issue">ارسال الشكوي</string>
+    <string-array name="issues_titles">
+        <item>مشكلة في التسليم</item>
+        <item>مشكلة مع الاستلام</item>
+        <item>مشكلة في إثبات الحالة</item>
+        <item>مشكلة في الرفض</item>
+        <item>مشكلة في اختيار السائق</item>
+        <item>مشكلة في اختيار السيارة</item>
+        <item>مشكلة اخرى</item>
+
+    </string-array>
 
 </resources>

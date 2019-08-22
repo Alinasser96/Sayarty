@@ -2,6 +2,9 @@ package com.alyndroid.syarty.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -15,6 +18,7 @@ import com.alyndroid.syarty.pojo.CoreUserData;
 import com.alyndroid.syarty.pojo.LoginResponse;
 import com.alyndroid.syarty.ui.base.BaseActivity;
 import com.alyndroid.syarty.ui.daily.CaptureActivity;
+import com.alyndroid.syarty.ui.newIssue.NewIssueActivity;
 import com.alyndroid.syarty.ui.selectCar.SelectCarActivity;
 import com.alyndroid.syarty.ui.selectDriver.SelectDriverActivity;
 import com.alyndroid.syarty.util.Constant;
@@ -52,6 +56,24 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         dashboardPresenter = component.getDashboardPresenter();
         dashboardPresenter.attachView(this);
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_home_drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.new_issue:
+                // code for option1
+                startActivity(new Intent(this, NewIssueActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

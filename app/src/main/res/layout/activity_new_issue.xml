@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:padding="@dimen/_20sdp"
+    tools:context=".ui.newIssue.NewIssueActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400sdp"
+        android:background="@drawable/rounded_white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/issue"
+                        android:tint="@color/colorAccent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/issue_hint"
+                        android:textSize="@dimen/_15sdp"
+                        android:fontFamily="@font/cairo_regular"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_15sdp"
+                    android:fontFamily="@font/cairo_regular"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@string/issue_title"/>
+
+                <Spinner
+                    android:id="@+id/sp_issues"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:entries="@array/issues_titles"/>
+                <TextView
+                    android:id="@+id/cars_title"
+                    android:visibility="gone"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_15sdp"
+                    android:fontFamily="@font/cairo_regular"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@string/select_car_title"/>
+
+                <Spinner
+                    android:visibility="gone"
+                    android:id="@+id/sp_cars"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/issue_content_text_input_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_white"
+                    android:padding="@dimen/_10sdp">
+
+                    <EditText
+                        android:id="@+id/et_new_issue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/issue_content"
+                        android:lines="4"
+                        android:padding="@dimen/_10sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_confirm_issue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/rounded_orange"
+                    android:text="@string/report_issue"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
