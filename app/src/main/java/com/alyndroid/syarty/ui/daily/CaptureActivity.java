@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -295,6 +296,26 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
             case 4:
                 comments.setFrontSideComment(commentEt.getText().toString());
                 break;
+        }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int action = event.getAction();
+        int keyCode = event.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (action == KeyEvent.ACTION_DOWN) {
+                    if (isCaptured) {
+                        nextStepAction();
+                    } else {
+                        mCamera.takePicture(null, null, mPicture);
+                        showProgress(getString(R.string.capture_loading));
+                    }
+                }
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
         }
     }
 }

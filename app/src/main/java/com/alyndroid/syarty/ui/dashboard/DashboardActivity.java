@@ -1,7 +1,9 @@
 package com.alyndroid.syarty.ui.dashboard;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ import com.alyndroid.syarty.ui.newIssue.NewIssueActivity;
 import com.alyndroid.syarty.ui.selectCar.SelectCarActivity;
 import com.alyndroid.syarty.ui.selectDriver.SelectDriverActivity;
 import com.alyndroid.syarty.util.Constant;
+import com.alyndroid.syarty.util.helpers.ShakeListener;
 
 import java.util.List;
 
@@ -38,6 +41,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     LinearLayout tasleem;
     private CoreUserData user;
     private DashboardPresenter dashboardPresenter;
+    private ShakeListener mShaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,17 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         dashboardPresenter = component.getDashboardPresenter();
         dashboardPresenter.attachView(this);
 
+        final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        mShaker = new ShakeListener(this);
+        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener () {
+            public void onShake()
+            {
+                vibe.vibrate(100);
+                startActivity(new Intent(DashboardActivity.this, NewIssueActivity.class));
+
+            }
+        });
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,11 +80,16 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onPause() {
+        mShaker.pause();
+        super.onPause();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.new_issue:
-                // code for option1
                 startActivity(new Intent(this, NewIssueActivity.class));
                 return true;
         }
@@ -79,6 +99,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         dashboardPresenter.getCars(user.getUserId());
+        mShaker.resume();
         super.onResume();
     }
 
