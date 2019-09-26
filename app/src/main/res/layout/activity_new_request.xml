@@ -18,11 +18,13 @@
         android:padding="@dimen/_10sdp">
 
         <TextView
+            android:id="@+id/new_request_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
             android:text="@string/new_request"
             android:textSize="@dimen/_20sdp"
+            android:gravity="center"
             android:textStyle="bold" />
 
         <TextView

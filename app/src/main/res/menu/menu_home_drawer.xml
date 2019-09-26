@@ -5,6 +5,9 @@
         android:id="@+id/new_issue"
         android:title="@string/add_issue"
         android:icon="@drawable/plus"/>
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"/>
 
 
 

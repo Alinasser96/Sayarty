@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -25,15 +24,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
 
 public class SelectDriverActivity extends BaseActivity implements SelectDriverView, View.OnClickListener {
 
-    @BindView(R.id.names_spinner)
-    Spinner namesSpinner;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.confirm)
     Button confirm;
+    @BindView(R.id.names_spinner)
+    SearchableSpinner namesSpinner;
     private SelectDriverPresenter selectDriverPresenter;
     public List<Driver> drivers;
     private CoreUserData user;
@@ -62,7 +63,7 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
         for (Driver driver : drivers) {
             if (driver.getID() == user.getUserId())
                 continue;
-                names.add(driver.getName());
+            names.add(driver.getName());
         }
 
 
@@ -74,7 +75,8 @@ public class SelectDriverActivity extends BaseActivity implements SelectDriverVi
 
     @Override
     public void onGetDriversFail(String error) {
-        CommonUtils.showToast(this, getString(R.string.some_error));
+        CommonUtils.showToast(this, getString(R.string.no_internet_message));
+        finish();
     }
 
     @Override

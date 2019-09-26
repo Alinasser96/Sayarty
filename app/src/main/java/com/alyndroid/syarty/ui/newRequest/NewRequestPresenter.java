@@ -9,6 +9,7 @@ import com.alyndroid.syarty.ui.base.BasePresenter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -29,7 +30,7 @@ public class NewRequestPresenter extends BasePresenter<NewRequestView> {
         map.put("_method", "put");
         map.put("status", status);
         map.put("photo_receiver_id", photosID);
-        map.put("attachment_car", attached);
+        map.put("attachment_car", attached.toString());
         Call<SetFireBaseTokenResponse> call = apiInterface.setOperationStatus(operation_id, map);
         getView().setLoading(150);
         call.enqueue(new Callback<SetFireBaseTokenResponse>() {

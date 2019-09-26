@@ -84,7 +84,7 @@
     <string name="delay_one_hour">ساعة</string>
     <string name="capture_loading">جاري معالجة الصورة</string>
     <string name="ok">موافق</string>
-    <string name="Tool_kit">شنطة العدة</string>
+    <string name="Tool_kit">شنطة العدة وقفل الدريكسيون</string>
     <string name="fire_cancel">طفاية حريق</string>
     <string name="first_aid">شنطة الإسعافات</string>
     <string name="estipn">الإستبن</string>
@@ -105,6 +105,10 @@
     <string name="no_feedback">لم يتم الرد على هذه الشكوى</string>
     <string name="issue_title">عنوان الشكوى :</string>
     <string name="report_issue">ارسال الشكوي</string>
+    <string name="welcome_name">مرحبا بك %S </string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="new_request_title">عملية تسليم جديدة من: %s</string>
+    <string name="electric">كهرباء السيارة والإنارة</string>
     <string-array name="issues_titles">
         <item>مشكلة في التسليم</item>
         <item>مشكلة مع الاستلام</item>

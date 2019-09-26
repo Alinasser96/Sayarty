@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -39,6 +40,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     LinearLayout dailyPics;
     @BindView(R.id.tasleem)
     LinearLayout tasleem;
+    @BindView(R.id.driver_name_tv)
+    TextView driverNameTv;
     private CoreUserData user;
     private DashboardPresenter dashboardPresenter;
     private ShakeListener mShaker;
@@ -59,12 +62,13 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 .build();
         dashboardPresenter = component.getDashboardPresenter();
         dashboardPresenter.attachView(this);
+        driverNameTv.setText(String.format(getString(R.string.welcome_name), user.getName()));
 
-        final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+
+        final Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         mShaker = new ShakeListener(this);
-        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener () {
-            public void onShake()
-            {
+        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener() {
+            public void onShake() {
                 vibe.vibrate(100);
                 startActivity(new Intent(DashboardActivity.this, NewIssueActivity.class));
 
@@ -92,6 +96,9 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
             case R.id.new_issue:
                 startActivity(new Intent(this, NewIssueActivity.class));
                 return true;
+            case R.id.logout:
+                logoutAction(this);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -118,6 +125,10 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.tasleem:
+                if (user.getCarInfo() == null) {
+                    showToast(getString(R.string.no_cars));
+                    return;
+                }
                 if (user.getCarInfo().size() == 1) {
                     intent = new Intent(this, SelectDriverActivity.class);
                     intent.putExtra(Constant.INTENT_EXTRAS.CAR_ID, user.getCarInfo().get(0).getId());

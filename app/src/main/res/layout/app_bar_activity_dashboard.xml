@@ -26,6 +26,14 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/driver_name_tv"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center"
+            android:fontFamily="@font/cairo_regular"
+            android:textSize="@dimen/_16sdp"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout

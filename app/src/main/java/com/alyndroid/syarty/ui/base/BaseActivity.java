@@ -20,16 +20,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
 
 import com.alyndroid.syarty.R;
 import com.alyndroid.syarty.data.local.SharedPreferenceHelper;
 import com.alyndroid.syarty.event.NetworkAvailabilityEvent;
+import com.alyndroid.syarty.ui.login.LoginActivity;
 import com.alyndroid.syarty.util.CommonUtils;
 import com.alyndroid.syarty.util.Connection;
 import com.alyndroid.syarty.util.constants.ConstantPermissions;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -313,7 +314,18 @@ public class BaseActivity extends AppCompatActivity {
 
     public void logoutAction(Context context) {
 
+        //clear cache
+        SharedPreferenceHelper.getInstance(this).logoutAction();
 
+        //goto login
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        try {
+            ActivityCompat.finishAffinity(this);
+        } catch (IllegalStateException e) {
+            finish();
+        }
     }
 
     public boolean isConnected() {

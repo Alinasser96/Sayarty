@@ -97,4 +97,18 @@ public class SharedPreferenceHelper {
     public String getFirebaseToken() {
         return mSharedPreferences.getString(Constant.SharedPreference.FIREBASE_TOKEN, "");
     }
+
+    public void logoutAction() {
+        coreUserData=null;
+        mSharedPreferences.edit()
+                .remove(Constant.SharedPreference.USER_TAG)
+                .remove(Constant.SharedPreference.ACCOUNT_AUTHORIZATION)
+                .remove(Constant.SharedPreference.ID_TRIP)
+                .remove(Constant.SharedPreference.FIREBASE_TOKEN)
+                .remove(Constant.SharedPreference.ID_TRIP)
+                .remove(Constant.SharedPreference.ID_TRIP)
+                .clear()
+                .apply();
+
+    }
 }

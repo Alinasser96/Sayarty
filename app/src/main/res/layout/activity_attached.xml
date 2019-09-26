@@ -91,6 +91,15 @@
                     android:layout_margin="@dimen/_3sdp"
                     android:checked="true"
                     android:textSize="@dimen/_20sdp"/>
+                <CheckBox
+                    android:id="@+id/electricCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/electric"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:checked="true"
+                    android:textSize="@dimen/_20sdp"/>
+
 
 
             </LinearLayout>

@@ -23,6 +23,7 @@
 
     <TextView
         style="@style/CairoRegular"
+        android:id="@+id/select_driver_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/appbar"
@@ -32,16 +33,24 @@
         android:text="@string/select_receiver"
         android:textSize="@dimen/_25sdp" />
 
-    <Spinner
+
+    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
         android:id="@+id/names_spinner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        android:layout_below="@id/select_driver_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:DoneSearchTintColor="@android:color/holo_purple"
+        app:RevealEmptyText="اضغط لاختيار سائق"
+        app:RevealViewBackgroundColor="@android:color/holo_blue_dark"
+        app:SearchViewBackgroundColor="@android:color/secondary_text_dark"
+        app:ShowBorders="false"
+        app:SpinnerExpandHeight="300dp"
+        app:StartSearchTintColor="@android:color/white" />
 
     <Button
         android:id="@+id/confirm"
@@ -52,3 +61,4 @@
         android:layout_centerHorizontal="true"
         android:text="@string/confirm" />
 </RelativeLayout>
+

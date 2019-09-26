@@ -111,7 +111,7 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
                 setTitle(getString(R.string.right_side_title));
                 hintTv.setText(getString(R.string.right_side_hint));
                 commentEt.setText("");
-                cameraFrame.setImageResource(R.drawable.truck_04);
+                cameraFrame.setImageResource(R.drawable.truck_01);
                 break;
             case 2:
                 hintTv.setText(getString(R.string.back_side_hint));
@@ -123,7 +123,7 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
                 hintTv.setText(getString(R.string.left_side_hint));
                 setTitle(getString(R.string.left_side_title));
                 commentEt.setText("");
-                cameraFrame.setImageResource(R.drawable.truck_01);
+                cameraFrame.setImageResource(R.drawable.truck_04);
                 break;
             case 4:
                 hintTv.setText(getString(R.string.front_side_hint));

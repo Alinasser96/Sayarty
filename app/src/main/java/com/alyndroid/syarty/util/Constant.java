@@ -53,6 +53,7 @@ public interface Constant {
         String FREQ_REMINDER = "FREQ_REMINDER ";
         String ATTACHED = "ATTACHED";
         String RECEIVER_NAME = "RECEIVER_NAME";
+        String SENDER_NAME = "sender_name";
     }
 
     interface REQUEST_CODES {
@@ -97,4 +98,6 @@ public interface Constant {
         int front_side_IMAGE = 103;
 
     }
+
+
 }

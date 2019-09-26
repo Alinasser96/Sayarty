@@ -58,6 +58,7 @@ public class ServiceFirebaseMessaging extends FirebaseMessagingService {
                 Intent intent = new Intent(ServiceFirebaseMessaging.this, NewRequestActivity.class);
                 intent.putExtra(Constant.INTENT_EXTRAS.Operation_id, remoteMessage.getData().get("operation_id"));
                 intent.putExtra(Constant.INTENT_EXTRAS.CAR_ID, remoteMessage.getData().get("car_id"));
+                intent.putExtra(Constant.INTENT_EXTRAS.SENDER_NAME, remoteMessage.getData().get("sender_name"));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;

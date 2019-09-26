@@ -32,7 +32,9 @@ public class DashboardPresenter extends BasePresenter<DashboardView> {
                     getView().onGetCarsFail(String.valueOf(response.code()));
                 }
 
-                getView().onGetCarsSuccess(response.body().getData());
+                if (response.body() != null) {
+                    getView().onGetCarsSuccess(response.body().getData());
+                }
             }
 
             @Override

@@ -71,7 +71,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         switch ((int) getIntent().getExtras().get(Constant.INTENT_EXTRAS.SIDE_NUMBER)) {
             case Constant.permission.right_side_IMAGE:
                 hintTv.setText(getString(R.string.right_side_hint));
-                cameraFrame.setImageResource(R.drawable.truck_04);
+                cameraFrame.setImageResource(R.drawable.truck_01);
                 break;
             case Constant.permission.back_side_IMAGE:
                 hintTv.setText(getString(R.string.back_side_hint));
@@ -79,7 +79,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case Constant.permission.left_side_IMAGE:
                 hintTv.setText(getString(R.string.left_side_hint));
-                cameraFrame.setImageResource(R.drawable.truck_01);
+                cameraFrame.setImageResource(R.drawable.truck_04);
                 break;
             case Constant.permission.front_side_IMAGE:
                 hintTv.setText(getString(R.string.front_side_hint));

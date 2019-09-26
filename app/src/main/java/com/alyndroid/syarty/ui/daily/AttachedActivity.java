@@ -17,7 +17,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +39,11 @@ public class AttachedActivity extends BaseActivity implements View.OnClickListen
     CheckBox firstAidCheckBox;
     @BindView(R.id.estipnCheckBox)
     CheckBox estipnCheckBox;
+    @BindView(R.id.electricCheckBox)
+    CheckBox electricCheckBox;
 
-    private ArrayList<String> attached = new ArrayList<String>() ;
+    private ArrayList<String> attached = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +56,13 @@ public class AttachedActivity extends BaseActivity implements View.OnClickListen
         fireCancelCheckBox.setOnClickListener(this);
         firstAidCheckBox.setOnClickListener(this);
         estipnCheckBox.setOnClickListener(this);
+        electricCheckBox.setOnClickListener(this);
+
         attached.add("tool_kit");
         attached.add("fire_cancel");
         attached.add("first_aid");
         attached.add("estipn");
+        attached.add("electric");
     }
 
     @Override
@@ -79,31 +84,38 @@ public class AttachedActivity extends BaseActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
             case R.id.toolKitCheckBox:
-                if (toolKitCheckBox.isChecked()){
+                if (toolKitCheckBox.isChecked()) {
                     attached.add("tool_kit");
-                } else{
+                } else {
                     attached.remove("tool_kit");
                 }
-                    break;
+                break;
             case R.id.fireCancelCheckBox:
-                if (fireCancelCheckBox.isChecked()){
+                if (fireCancelCheckBox.isChecked()) {
                     attached.add("fire_cancel");
-                } else{
+                } else {
                     attached.remove("fire_cancel");
                 }
                 break;
             case R.id.firstAidCheckBox:
-                if (firstAidCheckBox.isChecked()){
+                if (firstAidCheckBox.isChecked()) {
                     attached.add("first_aid");
-                } else{
+                } else {
                     attached.remove("first_aid");
                 }
                 break;
             case R.id.estipnCheckBox:
-                if (estipnCheckBox.isChecked()){
+                if (estipnCheckBox.isChecked()) {
                     attached.add("estipn");
-                } else{
+                } else {
                     attached.remove("estipn");
+                }
+                break;
+            case R.id.electricCheckBox:
+                if (electricCheckBox.isChecked()) {
+                    attached.add("electric");
+                } else {
+                    attached.remove("electric");
                 }
                 break;
 

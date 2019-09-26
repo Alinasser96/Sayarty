@@ -22,6 +22,9 @@ import com.alyndroid.syarty.util.CommonUtils;
 import com.alyndroid.syarty.util.Constant;
 import com.alyndroid.syarty.util.helpers.NotificationHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -43,6 +46,8 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
     Button btnDelayHalfHour;
     @BindView(R.id.btn_delay_one_hour)
     Button btnDelayOneHour;
+    @BindView(R.id.new_request_title)
+    TextView newRequestTitle;
     private MediaPlayer mediaPlayer;
     private Vibrator vibrator;
     private CountDownTimer countDownTimer;
@@ -75,6 +80,7 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
             isReminder = true;
         } else {
             operationID = getIntent().getExtras().getString(Constant.INTENT_EXTRAS.Operation_id);
+            newRequestTitle.setText(String.format(getString(R.string.new_request_title), getIntent().getExtras().getString(Constant.INTENT_EXTRAS.SENDER_NAME)));
         }
 
         notificationHelper = new NotificationHelper(this);
@@ -179,7 +185,7 @@ public class NewRequestActivity extends BaseActivity implements View.OnClickList
             vibrator.cancel();
             finish();
         } else {
-            newRequestPresenter.sendStatus(1, Integer.parseInt(operationID));
+            newRequestPresenter.sendStatus(1, Integer.parseInt(operationID), "0", new ArrayList());
         }
     }
 
