@@ -12,20 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                android:background="@color/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        </com.google.android.material.appbar.AppBarLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,6 +19,82 @@
             android:layout_margin="@dimen/_20sdp"
             android:orientation="vertical"
             android:padding="@dimen/_5sdp">
+
+            <Button
+                android:id="@+id/next_button"
+                style="@style/ActionButton.NextStepMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="9dp"
+                android:text="@string/confirm" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/il"
+                android:layout_below="@+id/hint_tv">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:rowCount="2">
+
+                    <CheckBox
+                        android:id="@+id/toolKitCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:checked="true"
+                        android:text="@string/Tool_kit"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <CheckBox
+                        android:id="@+id/fireCancelCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:checked="true"
+                        android:text="@string/fire_cancel"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <CheckBox
+                        android:id="@+id/firstAidCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:checked="true"
+                        android:text="@string/first_aid"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <CheckBox
+                        android:id="@+id/estipnCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:checked="true"
+                        android:text="@string/estipn"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <CheckBox
+                        android:id="@+id/electricCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:checked="true"
+                        android:text="@string/electric"
+                        android:textSize="@dimen/_20sdp" />
+
+
+                </LinearLayout>
+            </ScrollView>
 
             <TextView
                 android:id="@+id/hint_tv"
@@ -43,66 +105,6 @@
                 android:gravity="center"
                 android:text="@string/attached_confirmation_hint"
                 android:textSize="@dimen/_26sdp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/il"
-                android:layout_below="@+id/hint_tv"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2"
-                android:gravity="center_vertical"
-                android:columnOrderPreserved="false"
-                android:orientation="vertical"
-                android:rowCount="2">
-
-                <CheckBox
-                    android:id="@+id/toolKitCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Tool_kit"
-                    android:textSize="@dimen/_20sdp"
-                    android:checked="true"
-                    android:layout_margin="@dimen/_3sdp"/>
-
-                <CheckBox
-                    android:id="@+id/fireCancelCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/fire_cancel"
-                    android:layout_margin="@dimen/_3sdp"
-                    android:checked="true"
-                    android:textSize="@dimen/_20sdp"/>
-
-                <CheckBox
-                    android:id="@+id/firstAidCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/first_aid"
-                    android:layout_margin="@dimen/_3sdp"
-                    android:checked="true"
-                    android:textSize="@dimen/_20sdp"/>
-
-                <CheckBox
-                    android:id="@+id/estipnCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/estipn"
-                    android:layout_margin="@dimen/_3sdp"
-                    android:checked="true"
-                    android:textSize="@dimen/_20sdp"/>
-                <CheckBox
-                    android:id="@+id/electricCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/electric"
-                    android:layout_margin="@dimen/_3sdp"
-                    android:checked="true"
-                    android:textSize="@dimen/_20sdp"/>
-
-
-
-            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/il"
@@ -122,19 +124,22 @@
                     android:layout_alignBottom="@+id/il" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/next_button"
-                style="@style/ActionButton.NextStepMode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="9dp"
-                android:text="@string/confirm" />
-
 
         </RelativeLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
     </LinearLayout>
 
 

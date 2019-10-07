@@ -26,75 +26,76 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:id="@+id/driver_name_tv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/_10sdp"
-            android:gravity="center"
-            android:fontFamily="@font/cairo_regular"
-            android:textSize="@dimen/_16sdp"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/daily_pics"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_white"
-            android:orientation="vertical"
-            android:padding="@dimen/_5sdp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/camera" />
-
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical">
             <TextView
+                android:id="@+id/driver_name_tv"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/_10sdp"
+                android:gravity="center"
+                android:fontFamily="@font/cairo_regular"
+                android:textSize="@dimen/_16sdp"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/daily_pics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:text="@string/verify_new_case"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18sdp" />
-        </LinearLayout>
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
 
-        <LinearLayout
-            android:id="@+id/tasleem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_white"
-            android:orientation="vertical"
-            android:padding="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/camera" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/truck" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:text="@string/verify_new_case"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18sdp" />
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/tasleem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:text="@string/truck_deliver"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18sdp" />
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/truck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:text="@string/truck_deliver"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18sdp" />
+            </LinearLayout>
+
+
         </LinearLayout>
-
-
     </LinearLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

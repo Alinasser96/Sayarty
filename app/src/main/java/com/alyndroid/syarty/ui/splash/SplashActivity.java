@@ -1,11 +1,14 @@
 package com.alyndroid.syarty.ui.splash;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alyndroid.syarty.BuildConfig;
 import com.alyndroid.syarty.R;
 import com.alyndroid.syarty.data.local.SharedPreferenceHelper;
 import com.alyndroid.syarty.di.component.DaggerPresenterComponent;
@@ -32,6 +35,7 @@ public class SplashActivity extends BaseActivity implements SplashView, LoginVie
     ImageView logoImageView;
     @BindView(R.id.app_name_textView)
     TextView appNameTextView;
+    int versionCode = BuildConfig.VERSION_CODE;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private SplashPresenter splashPresenter;
     private CoreUserData user;
@@ -62,19 +66,24 @@ public class SplashActivity extends BaseActivity implements SplashView, LoginVie
     @Override
     public void onCheckVersionSuccess(CheckVersionResponse checkVersionResponse) {
 
-        if (SharedPreferenceHelper.getInstance(this).getCoreUserData() != null) {
-            user = SharedPreferenceHelper.getInstance(this).getCoreUserData();
-            PresenterComponent component = DaggerPresenterComponent
-                    .builder()
-                    .acc(this)
-                    .build();
-            loginPresenter = component.getPresenter();
-            loginPresenter.attachView(this);
-            loginPresenter.login(user.getPhone(), user.getPassword());
+        if (checkVersionResponse.getData().get(0).getCode()> versionCode) {
+            showUpdateVersionDialog();
         } else {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-            finish();
+            if (SharedPreferenceHelper.getInstance(this).getCoreUserData() != null) {
+                user = SharedPreferenceHelper.getInstance(this).getCoreUserData();
+                PresenterComponent component = DaggerPresenterComponent
+                        .builder()
+                        .acc(this)
+                        .build();
+                loginPresenter = component.getPresenter();
+                loginPresenter.attachView(this);
+                loginPresenter.login(user.getPhone(), user.getPassword());
+            } else {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
+            }
         }
+
     }
 
     @Override
@@ -119,5 +128,20 @@ public class SplashActivity extends BaseActivity implements SplashView, LoginVie
     @Override
     public void onSetFireBaseTokenFail() {
         loginPresenter.setFireBaseToken(user.getUserId(), SharedPreferenceHelper.getInstance(this).getFirebaseToken());
+    }
+
+    protected void showUpdateVersionDialog() {
+        new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle(R.string.update_version)
+                .setMessage(R.string.update_version_available)
+                .setPositiveButton(R.string.update, (dialogInterface, i) -> {
+                    final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                    }
+                }).create().show();
     }
 }

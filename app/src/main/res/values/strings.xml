@@ -109,6 +109,9 @@
     <string name="logout">تسجيل الخروج</string>
     <string name="new_request_title">عملية تسليم جديدة من: %s</string>
     <string name="electric">كهرباء السيارة والإنارة</string>
+    <string name="update_version">قم بتحديث البرنامج</string>
+    <string name="update_version_available">يوجد تحديث لبرنامج البايلوت، من فضلك قم به حتي يمكنك الدخول</string>
+    <string name="update">تحديث</string>
     <string-array name="issues_titles">
         <item>مشكلة في التسليم</item>
         <item>مشكلة مع الاستلام</item>
