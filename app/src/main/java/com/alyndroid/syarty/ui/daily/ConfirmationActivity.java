@@ -274,7 +274,6 @@ public class ConfirmationActivity extends BaseActivity implements View.OnClickLi
                 break;
         }
 
-
     }
 
     @Override

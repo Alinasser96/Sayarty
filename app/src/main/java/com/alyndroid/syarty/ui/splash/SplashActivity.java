@@ -26,6 +26,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class SplashActivity extends BaseActivity implements SplashView, LoginView {
