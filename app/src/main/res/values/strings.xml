@@ -112,6 +112,9 @@
     <string name="update_version">قم بتحديث البرنامج</string>
     <string name="update_version_available">يوجد تحديث لبرنامج البايلوت، من فضلك قم به حتي يمكنك الدخول</string>
     <string name="update">تحديث</string>
+    <string name="overlay_title">عرض البرنامج من الخلفية</string>
+    <string name="overlay_message">يجب تمكين عرض البرنامج من الخلفية كما هو موضح</string>
+    <string name="enable">تمكين</string>
     <string-array name="issues_titles">
         <item>مشكلة في التسليم</item>
         <item>مشكلة مع الاستلام</item>

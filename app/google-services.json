@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:984423988814:android:e42957edc8eb12f21a0d1f",
+        "android_client_info": {
+          "package_name": "com.alyndroid.sayarty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984423988814-kfpo9j3egtn4530q9qs2vmep6ftca4ml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alyndroid.sayarty",
+            "certificate_hash": "647c70258bbc81f8e72b70ef03a9181d9592a9d5"
+          }
+        },
+        {
+          "client_id": "984423988814-eu6vv4b2nm523l2c3834lhldq7n02cvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5g611JUsJbIHmuX_dHv7krrvfZtyyaWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984423988814-eu6vv4b2nm523l2c3834lhldq7n02cvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:984423988814:android:d675f1c2bab4eb7e",
         "android_client_info": {
           "package_name": "com.alyndroid.syarty"
