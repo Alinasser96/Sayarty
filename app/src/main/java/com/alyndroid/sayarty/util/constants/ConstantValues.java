@@ -6,7 +6,7 @@ public interface ConstantValues {
 
     int MAP_ZOOM = 16;
     int NO_CURRENT_STATION_INDEX = -1;
-    String PHONE = "phone";
+    String PHONE = "code";
     String PASSWORD = "password";
     String LEFT_SIDE_IMG = "left_side_img";
     String back_SIDE_IMG = "back_side_img";

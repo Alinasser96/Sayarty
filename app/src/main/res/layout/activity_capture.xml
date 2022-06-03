@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:text="@string/right_side_hint"
                 android:textSize="@dimen/_22sdp"
-                app:layout_constraintBottom_toTopOf="@+id/camera_layout"
+                app:layout_constraintBottom_toTopOf="@+id/photo_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -130,48 +130,15 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/capture_button" />
 
-            <RelativeLayout
-                android:id="@+id/camera_layout"
+            <ImageView
+                android:id="@+id/photo_img"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/il"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hint_tv"
-                android:gravity="center">
-                <FrameLayout
-                    android:id="@+id/camera_preview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="81"
-                        android:background="@color/black_semi_transparent"/>
-                    <ImageView
-                        android:id="@+id/camera_frame"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/truck_04"
-                        android:layout_weight="1"
-                        />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="81"
-                        android:background="@color/black_semi_transparent"/>
-
-
-                </LinearLayout>
-            </RelativeLayout>
+                android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

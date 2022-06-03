@@ -1,9 +1,11 @@
 package com.alyndroid.sayarty.ui.daily;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import com.alyndroid.sayarty.di.component.CommentsComponent;
 import com.alyndroid.sayarty.di.component.DaggerCommentsComponent;
 import com.alyndroid.sayarty.pojo.CameraPreview;
 import com.alyndroid.sayarty.pojo.Comments;
+import com.alyndroid.sayarty.ui.CameraActivity;
 import com.alyndroid.sayarty.ui.base.BaseActivity;
 import com.alyndroid.sayarty.util.CommonUtils;
 import com.alyndroid.sayarty.util.Constant;
@@ -53,15 +56,14 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
     Toolbar toolbar;
     @BindView(R.id.hint_tv)
     TextView hintTv;
-    @BindView(R.id.camera_frame)
-    ImageView cameraFrame;
     @BindView(R.id.capture_button)
     Button capButton;
     @BindView(R.id.edit_button)
     Button editButton;
     @BindView(R.id.comment_et)
     EditText commentEt;
-    private Camera mCamera;
+    @BindView(R.id.photo_img)
+    ImageView photoImg;
     private boolean isCaptured;
     private File scaledDownCapturedImageFile, rightSideImg, backSideImg, leftSideImg, frontSideImg;
     private int currentSide;
@@ -79,19 +81,16 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
         CommentsComponent component = DaggerCommentsComponent.create();
         comments = component.getComments();
         currentSide = 1;
+        updateUi(currentSide);
     }
 
     @Override
     protected void onResume() {
-        checkPermission();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        if (mCamera != null) {
-            mCamera.release();
-        }
         super.onPause();
     }
 
@@ -106,84 +105,32 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
 
     private void updateUi(int sideNumber) {
         currentSide = sideNumber;
+        photoImg.setImageBitmap(null);
         openCamera();
         switch (sideNumber) {
             case 1:
                 setTitle(getString(R.string.right_side_title));
                 hintTv.setText(getString(R.string.right_side_hint));
                 commentEt.setText("");
-                cameraFrame.setImageResource(R.drawable.truck_01);
+//                cameraFrame.setImageResource(R.drawable.truck_01);
                 break;
             case 2:
                 hintTv.setText(getString(R.string.back_side_hint));
                 setTitle(getString(R.string.back_Side_title));
                 commentEt.setText("");
-                cameraFrame.setImageResource(R.drawable.truck_02);
+//                cameraFrame.setImageResource(R.drawable.truck_02);
                 break;
             case 3:
                 hintTv.setText(getString(R.string.left_side_hint));
                 setTitle(getString(R.string.left_side_title));
                 commentEt.setText("");
-                cameraFrame.setImageResource(R.drawable.truck_04);
+//                cameraFrame.setImageResource(R.drawable.truck_04);
                 break;
             case 4:
                 hintTv.setText(getString(R.string.front_side_hint));
                 setTitle(getString(R.string.front_Side_title));
                 commentEt.setText("");
-                cameraFrame.setImageResource(R.drawable.truck_03);
-                break;
-        }
-    }
-
-
-    private void checkPermission() {
-
-
-        List<String> permissions = new ArrayList<>();
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-        }
-        if (!permissions.isEmpty()) {
-            Toast.makeText(this, "Storage access needed to manage the picture.", Toast.LENGTH_LONG).show();
-            String[] params = permissions.toArray(new String[0]);
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, Constant.permission.STORAGE);
-        } else { // We already have permissions, so handle as normal
-            mCamera = Camera.open(0);
-            // Create our Preview view and set it as the content of our activity.
-            CameraPreview mPreview = new CameraPreview(this, mCamera);
-            FrameLayout preview = findViewById(R.id.camera_preview);
-            preview.addView(mPreview);
-            updateUi(currentSide);
-            return;
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case Constant.permission.STORAGE: {
-                Map<String, Integer> perms = new HashMap<>();
-                // Initial
-                perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
-                // Fill with results
-                for (int i = 0; i < permissions.length; i++)
-                    perms.put(permissions[i], grantResults[i]);
-                // Check for WRITE_EXTERNAL_STORAGE
-                boolean storage = perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-                boolean camera = perms.get(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
-                if (camera) {
-                    mCamera = Camera.open(0);
-                    CameraPreview mPreview = new CameraPreview(this, mCamera);
-                    FrameLayout preview = findViewById(R.id.camera_preview);
-                    preview.addView(mPreview);
-
-                } else {
-                    // Permission Denied
-                    Toast.makeText(this, "Storage permission is needed to analyse the picture.", Toast.LENGTH_LONG).show();
-                }
-            }
-            default:
+//                cameraFrame.setImageResource(R.drawable.truck_03);
                 break;
         }
     }
@@ -195,8 +142,9 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
                 if (isCaptured) {
                     nextStepAction();
                 } else {
-                    mCamera.takePicture(null, null, mPicture);
-                    showProgress(getString(R.string.capture_loading));
+                    Intent intent = new Intent(this, CameraActivity.class);
+                    intent.putExtra("CurrentSide", currentSide);
+                    startActivityForResult(intent,1000);
                 }
                 break;
 
@@ -225,7 +173,6 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
             intent.putExtra(Constant.INTENT_EXTRAS.Operation_id, getIntent().getExtras().getString(Constant.INTENT_EXTRAS.Operation_id));
             intent.putExtra(Constant.INTENT_EXTRAS.CAR_ID, getIntent().getExtras().getString(Constant.INTENT_EXTRAS.CAR_ID));
             intent.putExtra(Constant.INTENT_EXTRAS.COMMENTS, comments);
-            mCamera.release();
             startActivity(intent);
 
         } else {
@@ -280,7 +227,6 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
         editButton.setVisibility(View.GONE);
         isCaptured = false;
         capButton.setText(getString(R.string.capture));
-        mCamera.startPreview();
     }
 
     private void setComments() {
@@ -310,8 +256,9 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
                     if (isCaptured) {
                         nextStepAction();
                     } else {
-                        mCamera.takePicture(null, null, mPicture);
-                        showProgress(getString(R.string.capture_loading));
+                        Intent intent = new Intent(this, CameraActivity.class);
+                        intent.putExtra("CurrentSide", currentSide);
+                        startActivityForResult(intent,1000);
                     }
                 }
                 return true;
@@ -319,4 +266,33 @@ public class CaptureActivity extends BaseActivity implements View.OnClickListene
                 return super.dispatchKeyEvent(event);
         }
     }
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1000) {
+            if(resultCode == Activity.RESULT_OK){
+                capButton.setText(getString(R.string.next_step));
+                editButton.setVisibility(View.VISIBLE);
+                scaledDownCapturedImageFile = (File) data.getExtras().get("result");
+                isCaptured = true;
+                hideProgress();
+                photoImg.setImageBitmap(BitmapFactory.decodeFile(scaledDownCapturedImageFile.getAbsolutePath()));
+                switch (currentSide) {
+                    case 1:
+                        rightSideImg = scaledDownCapturedImageFile;
+                        break;
+                    case 2:
+                        backSideImg = scaledDownCapturedImageFile;
+                        break;
+                    case 3:
+                        leftSideImg = scaledDownCapturedImageFile;
+                        break;
+                    case 4:
+                        frontSideImg = scaledDownCapturedImageFile;
+                        break;
+            }
+        }
+    } //onActivityResult
+}}

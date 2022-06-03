@@ -91,9 +91,6 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         if (TextUtils.isEmpty(phoneNumber)) {
             currentView = phoneNumberEt;
             showTextInputLayoutError(phoneNumberTextInputLayout, getString(R.string.phone_number_error));
-        } else if (!CommonUtils.isValidRegex(phoneNumber, ConstantRegex.MOBILE_NUMBER)) {
-            currentView = phoneNumberEt;
-            showTextInputLayoutError(phoneNumberTextInputLayout, getString(R.string.phone_number_error));
         }
 
         if (null != currentView) {
